@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://images.unsplash.com https://i.pravatar.cc; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com data:; script-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<title>Tableau de bord — Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js" defer></script>
+</head>
+<body>
+<div class="app has-secondary-panel" id="app">
+  <div class="overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head"><a href="index.html" class="brand"><span class="brand-mark">◈</span><span class="brand-name">Panel</span></a><button class="icon-btn only-mobile" id="closeSidebar" aria-label="Fermer le menu"><span class="material-icons-sharp">close</span></button></div>
+    <div class="role-switch"><label for="roleSelect" class="muted">Rôle</label><select id="roleSelect"><option value="admin">Admin</option><option value="vendeur">Vendeur</option></select></div>
+    <nav class="nav">
+      <p class="nav-label">Général</p>
+      <a href="index.html" class="nav-link active"><span class="material-icons-sharp">grid_view</span>Tableau de bord</a>
+      <a href="clients.html" class="nav-link" data-role="admin"><span class="material-icons-sharp">group</span>Clients</a>
+      <a href="commandes.html" class="nav-link"><span class="material-icons-sharp">receipt_long</span>Commandes</a>
+      <a href="statistiques.html" class="nav-link"><span class="material-icons-sharp">bar_chart</span>Statistiques</a>
+      <p class="nav-label">Contenu</p>
+      <a href="messages.html" class="nav-link"><span class="material-icons-sharp">chat_bubble_outline</span>Messages<span class="pill">4</span></a>
+      <a href="produits.html" class="nav-link"><span class="material-icons-sharp">inventory_2</span>Produits</a>
+      <a href="rapports.html" class="nav-link" data-role="admin"><span class="material-icons-sharp">description</span>Rapports</a>
+      <p class="nav-label">Compte</p>
+      <a href="reglages.html" class="nav-link" data-role="admin"><span class="material-icons-sharp">tune</span>Réglages</a>
+      <a href="#" class="nav-link" id="navAddProduct"><span class="material-icons-sharp">add_circle_outline</span>Ajouter un produit</a>
+      <a href="#" class="nav-link nav-link-danger"><span class="material-icons-sharp">logout</span>Déconnexion</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="topbar-left"><button class="icon-btn only-mobile" id="openSidebar" aria-label="Ouvrir le menu"><span class="material-icons-sharp">menu</span></button><div><h1>Tableau de bord</h1><p class="muted">Vue d'ensemble de l'activité</p></div></div><div class="topbar-right"><div class="search"><span class="material-icons-sharp">search</span><input type="search" id="orderSearch" placeholder="Rechercher une commande…"></div><button class="icon-btn" id="themeToggle" aria-label="Changer de thème"><span class="material-icons-sharp" id="themeIcon">dark_mode</span></button><button class="icon-btn" aria-label="Notifications"><span class="material-icons-sharp">notifications_none</span><span class="dot-badge"></span></button><img class="avatar" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=200&q=80" alt="Profil technologique"></div></header>
+    <section class="kpi-grid"><article class="kpi-card"><div class="kpi-ring" data-value="72"><svg viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="34"></circle><circle class="ring-fill" cx="40" cy="40" r="34"></circle></svg><span class="ring-label">72%</span></div><div class="kpi-info"><p class="muted">Ventes totales</p><h2 class="mono">$48,290</h2><span class="trend up"><span class="material-icons-sharp">trending_up</span>+12,4%</span></div></article><article class="kpi-card"><div class="kpi-ring" data-value="41"><svg viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="34"></circle><circle class="ring-fill ring-warn" cx="40" cy="40" r="34"></circle></svg><span class="ring-label">41%</span></div><div class="kpi-info"><p class="muted">Dépenses totales</p><h2 class="mono">$16,120</h2><span class="trend down"><span class="material-icons-sharp">trending_down</span>-3,1%</span></div></article><article class="kpi-card"><div class="kpi-ring" data-value="86"><svg viewBox="0 0 80 80"><circle class="ring-track" cx="40" cy="40" r="34"></circle><circle class="ring-fill ring-ok" cx="40" cy="40" r="34"></circle></svg><span class="ring-label">86%</span></div><div class="kpi-info"><p class="muted">Revenu total</p><h2 class="mono">$32,170</h2><span class="trend up"><span class="material-icons-sharp">trending_up</span>+8,7%</span></div></article></section>
+    <section class="panel"><div class="panel-head"><h3>Tendance des ventes</h3><div class="filters"><button class="chip active" data-range="7">7 jours</button><button class="chip" data-range="30">30 jours</button></div></div><div class="chart-wrap"><canvas id="salesChart" height="90"></canvas></div></section>
+    <section class="panel"><div class="panel-head"><h3>Commandes récentes</h3><div class="filters"><button class="chip active" data-filter="all">Tous</button><button class="chip" data-filter="paid">Payé</button><button class="chip" data-filter="pending">En attente</button><button class="chip" data-filter="failed">Échoué</button><button class="chip chip-outline" id="exportCsv"><span class="material-icons-sharp">download</span>CSV</button></div></div><div class="table-wrap"><table id="ordersTable"><thead><tr><th>Nom du produit</th><th>Numéro du produit</th><th>Statut du paiement</th><th>Livraison</th><th>Détails</th></tr></thead><tbody id="ordersBody"></tbody></table></div><p class="empty-state" id="emptyState" hidden>Aucune commande ne correspond à ta recherche.</p><div class="pagination" id="pagination"></div></section>
+  </main>
+  <aside class="right-panel"><div class="live"><span class="live-dot"></span><span class="mono">En direct</span><span class="muted" id="clock"></span></div><section class="panel"><div class="panel-head compact"><h3>Mises à jour récentes</h3></div><ul class="updates" id="updatesList"></ul></section><section class="panel"><div class="panel-head compact"><h3>Analyse des ventes</h3></div><div class="mini-stats"><div class="mini-stat"><span class="material-icons-sharp">shopping_bag</span><div><p class="mono">1,204</p><span class="muted">Commandes en ligne</span></div></div><div class="mini-stat"><span class="material-icons-sharp">storefront</span><div><p class="mono">328</p><span class="muted">Commandes hors ligne</span></div></div><div class="mini-stat"><span class="material-icons-sharp">person_add</span><div><p class="mono">96</p><span class="muted">Nouveaux clients</span></div></div></div><button class="btn-primary" id="addProductBtn"><span class="material-icons-sharp">add</span>Ajouter un produit</button></section></aside>
+  <div class="modal-overlay" id="modalOverlay" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><h3 id="modalTitle">Ajouter un produit</h3><button class="icon-btn" id="modalClose" aria-label="Fermer"><span class="material-icons-sharp">close</span></button></div><form id="productForm" class="modal-form"><label>Nom du produit<input type="text" name="name" maxlength="60" required placeholder="Ex : Clavier Mécanique RGB"></label><div class="form-row"><label>Prix (USD)<input type="number" name="price" min="0" step="0.01" required placeholder="0.00"></label><label>Stock<input type="number" name="stock" min="0" required placeholder="0"></label></div><label>Catégorie<select name="category"><option>Électronique</option><option>Accessoires</option><option>Informatique</option><option>Autre</option></select></label><div class="modal-actions"><button type="button" class="btn-ghost" id="modalCancel">Annuler</button><button type="submit" class="btn-primary btn-inline"><span class="material-icons-sharp">check</span>Enregistrer</button></div></form></div></div>
+  <div class="toast" id="toast" hidden></div>
+</div>
+<script src="scripts/script.js"></script>
+</body>
+</html>
