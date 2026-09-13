@@ -352,13 +352,13 @@ tbody tr:hover{background:var(--bg-surface-2);}
 }
 .modal-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:1.25rem;}
 .modal-form{display:flex; flex-direction:column; gap:1rem;}
-.modal-form label{display:flex; flex-direction:column; gap:.4rem; font-size:.82rem; color:var(--text-secondary); font-weight:500;}
+.modal-form label{display:flex; flex-direction:column; gap:.4rem; font-size:.82rem; color:var(--text-secondary); font-weight:500; min-width:0;}
 .modal-form input, .modal-form select{
-  background:var(--bg-surface-2); border:1px solid var(--border); border-radius:var(--radius-s);
+  width:100%; min-width:0; background:var(--bg-surface-2); border:1px solid var(--border); border-radius:var(--radius-s);
   padding:.6rem .7rem; color:var(--text-primary); font-family:inherit; font-size:.9rem;
 }
 .modal-form input:focus, .modal-form select:focus{outline:none; border-color:var(--accent);}
-.form-row{display:grid; grid-template-columns:1fr 1fr; gap:1rem;}
+.form-row{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:1rem;}
 .modal-actions{display:flex; justify-content:flex-end; gap:.6rem; margin-top:.5rem;}
 .btn-ghost{padding:.6rem 1rem; border-radius:var(--radius-s); color:var(--text-secondary); font-weight:600; font-size:.85rem;}
 .btn-ghost:hover{background:var(--bg-elevated);}
@@ -412,4 +412,6 @@ tbody tr:hover{background:var(--bg-surface-2);}
   .search{display:none;}
   .product-row{grid-template-columns:38px 1fr 32px;}.product-row>.mono,.product-row>.stock{display:none;}
   .insight-panel{align-items:flex-start; flex-direction:column; gap:.75rem;}
+  .modal{padding:1.1rem;}
+  .form-row{grid-template-columns:1fr;}
 }
