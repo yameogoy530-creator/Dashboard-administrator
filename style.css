@@ -311,7 +311,8 @@ tbody tr:hover{background:var(--bg-surface-2);}
    ========================================================= */
 .chip-outline{background:transparent; border:1px solid var(--border); display:inline-flex; align-items:center; gap:.3rem; margin-left:auto;}
 .chip-outline .material-icons-sharp{font-size:1rem;}
-.chart-wrap{height:220px; position:relative;}
+.chart-wrap{height:220px; position:relative; width:100%; overflow:hidden;}
+.chart-wrap canvas{display:block; width:100%; height:100%;}
 
 /* =========================================================
    SKELETON LOADERS
