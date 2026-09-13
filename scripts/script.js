@@ -407,3 +407,14 @@ themeToggle.addEventListener('click', () => {
   const range = document.querySelector('.chip[data-range].active')?.dataset.range || 7;
   setTimeout(() => renderChart(Number(range)), 50);
 });
+
+// Re-render chart on resize / rotation so it stays sized to its container
+// (fixes horizontal overflow caused by devicePixelRatio on mobile screens)
+let chartResizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(chartResizeTimer);
+  chartResizeTimer = setTimeout(() => {
+    const range = document.querySelector('.chip[data-range].active')?.dataset.range || 7;
+    renderChart(Number(range));
+  }, 150);
+});
